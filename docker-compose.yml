@@ -1,12 +1,12 @@
 version: "3"
 services:
-  #  Create a service named db.
+  #  Create a service named app-db.
   app-db:
     #   Use the Docker Image postgres. This will pull the newest release.
     image: "postgres"
-    #   Give the container the name my_postgres. You can changes to something else.
+    #   Give the container the name publishing_results_app_container
     container_name: "publishing_results_app_container"
-    #   Setup the username, password, and database name. You can changes these values.
+    #   Setup the username, password, and database name.
     environment:
       - POSTGRES_USER=admin
       - POSTGRES_PASSWORD=admin
