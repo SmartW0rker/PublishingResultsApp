@@ -24,7 +24,7 @@ public class Professor {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "email", nullable = false)
+    @Column(name = "email", nullable = false,unique = true)
     private String email;
 
     @Enumerated(EnumType.ORDINAL)
@@ -40,8 +40,7 @@ public class Professor {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Professor)) return false;
-        Professor professor = (Professor) o;
+        if (!(o instanceof Professor professor)) return false;
         return getId() == professor.getId() && getName().equals(professor.getName()) && getEmail().equals(professor.getEmail()) && getRole() == professor.getRole() && Objects.equals(getSubjects(), professor.getSubjects());
     }
 
