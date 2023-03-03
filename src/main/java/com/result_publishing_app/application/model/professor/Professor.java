@@ -17,8 +17,9 @@ import java.util.Objects;
 public class Professor {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", unique = true)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "professor_sequence")
+    @SequenceGenerator(name = "professor_sequence", sequenceName = "professor_sequence",initialValue = 1, allocationSize = 3)
+    @Column(name = "id")
     private long id;
 
     @Column(name = "name", nullable = false)

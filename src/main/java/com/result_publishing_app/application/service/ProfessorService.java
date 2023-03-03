@@ -42,7 +42,7 @@ public class ProfessorService {
         if (professorRepository.existsByEmail(command.getEmail()))
             throw new ProfessorEmailExist(command.getEmail());
         else{
-            Professor professor=mapper.commandToModel(command);
+            Professor professor=mapper.createProfessor(command);
             return professorRepository.save(professor);
         }
     }
@@ -51,7 +51,9 @@ public class ProfessorService {
 
         Professor professor=professorRepository.findById(command.getId()).orElseThrow(()-> new ProfessorNotFoundException(command.getId()));
 
-        mapper.updateProfessor(professor,command);
+        mapper.updateProfessor(command,professor);
+
+        professorRepository.save(professor);
 
         return professor;
 

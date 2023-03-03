@@ -15,7 +15,8 @@ import java.util.Objects;
 @Entity
 public class Student {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "student_sequence")
+    @SequenceGenerator(name = "student_sequence", sequenceName = "student_sequence",initialValue = 2, allocationSize = 3)
     @Column(name = "id",unique = true)
     private long id;
     @Column(name = "index", length = 6)

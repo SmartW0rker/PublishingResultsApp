@@ -1,16 +1,17 @@
 package com.result_publishing_app.application.web.rest;
 
 import com.result_publishing_app.application.model.professor.Professor;
+import com.result_publishing_app.application.model.professor.ProfessorCommand;
 import com.result_publishing_app.application.service.ProfessorService;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController("/professors")
+@RestController
+@RequestMapping("/api/professors")
 public class ProfessorController {
 
     @Autowired
@@ -25,4 +26,21 @@ public class ProfessorController {
     public List<Professor> findAllProfessors(){
         return professorService.findAll();
     }
+
+    @GetMapping("/findByEmail")
+    public Professor findProfessorByEmail(@RequestParam String email){
+        return professorService.findByEmail(email);
+    }
+
+    @PostMapping("/create")
+    public Professor createProfessor(@RequestBody ProfessorCommand command){
+        return professorService.createProfessor(command);
+    }
+
+    @PutMapping("/update")
+    public Professor updateProfessor(@RequestBody ProfessorCommand command){
+        return professorService.updateProfessor(command);
+    }
+
+
 }
