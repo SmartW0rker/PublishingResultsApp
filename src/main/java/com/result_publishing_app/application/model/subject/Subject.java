@@ -18,7 +18,8 @@ import java.util.Objects;
 public class Subject {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "subject_sequence")
+    @SequenceGenerator(name = "subject_sequence", sequenceName = "subject_sequence",initialValue = 7, allocationSize = 3)
     @Column(name = "id", unique = true)
     private long id;
 
