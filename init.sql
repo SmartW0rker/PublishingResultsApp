@@ -84,3 +84,7 @@ CREATE SEQUENCE professor_sequence
 CREATE SEQUENCE student_sequence
     INCREMENT 3
     START 2;
+
+CREATE SEQUENCE session_sequence
+    INCREMENT 3
+    START 5;

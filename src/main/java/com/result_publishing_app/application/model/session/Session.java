@@ -17,7 +17,8 @@ import java.util.Objects;
 public class Session {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "session_sequence")
+    @SequenceGenerator(name = "session_sequence", sequenceName = "session_sequence",initialValue = 5, allocationSize = 3)
     @Column(name = "id", unique = true)
     private long Id;
     @Column(name = "name")
