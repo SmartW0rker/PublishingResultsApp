@@ -21,5 +21,5 @@ public class ProfessorResponse {
 
     private ProfessorRole role;
 
-    private List<Subject> subjects;
+    private List<Long> subjectIds;
 }

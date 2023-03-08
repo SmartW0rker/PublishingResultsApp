@@ -40,4 +40,9 @@ public class SessionController {
     public Session update(@RequestBody SessionCommand command){
         return service.update(command);
     }
+
+    @DeleteMapping("delete/{id}")
+    public void delete(@PathVariable Long id){
+        service.delete(id);
+    }
 }

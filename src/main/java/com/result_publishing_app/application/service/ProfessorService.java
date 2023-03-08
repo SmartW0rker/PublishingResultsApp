@@ -58,4 +58,10 @@ public class ProfessorService {
         return professor;
 
     }
+
+    public void deleteProfessor(Long id){
+        Professor professor=professorRepository.findById(id).orElseThrow(()-> new ProfessorNotFoundException(id));
+
+        professorRepository.delete(professor);
+    }
 }

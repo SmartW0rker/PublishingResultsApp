@@ -54,4 +54,10 @@ public class SessionService {
         return sessionRepository.save(session);
 
     }
+
+    public void  delete(Long id){
+        Session session= sessionRepository.findById(id).orElseThrow(()->new SessionNotFoundException(String
+                .format("Session with id %d does not exist",id)));
+        sessionRepository.delete(session);
+    }
 }

@@ -1,11 +1,14 @@
 package com.result_publishing_app.application.model.results;
 
+import com.result_publishing_app.application.model.session.Session;
+import com.result_publishing_app.application.model.subject.Subject;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Objects;
+
 
 @Data
 @NoArgsConstructor
@@ -14,15 +17,18 @@ import java.util.Objects;
 public class Results {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private long id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "join_sequence")
+    @SequenceGenerator(name = "join_sequence", sequenceName = "join_sequence", allocationSize = 1)
+    @Column(name = "id",unique = true)
+    private Integer id;
 
-    @Column(name="session_id")
-    private long sessionId;
+    @ManyToOne
+    @JoinColumn(name = "session_id")
+    private Session session;
 
-    @Column(name="subject_id")
-    private long subjectId;
+    @ManyToOne
+    @JoinColumn(name = "subject_id")
+    private Subject subject;
 
     @Column(name="link_pdf")
     private String link;
@@ -32,11 +38,6 @@ public class Results {
         if (this == o) return true;
         if (!(o instanceof Results)) return false;
         Results results = (Results) o;
-        return getId() == results.getId() && getSessionId() == results.getSessionId() && getSubjectId() == results.getSubjectId() && getLink().equals(results.getLink());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getId(), getSessionId(), getSubjectId(), getLink());
+        return Objects.equals(getSession(), results.getSession()) && Objects.equals(getSubject(), results.getSubject()) && Objects.equals(getLink(), results.getLink());
     }
 }

@@ -58,4 +58,9 @@ public class StudentService {
         studentMapper.updateStudent(command,student);
         return student;
     }
+
+    public void delete(Long id){
+        Student student=studentRepository.findById(id).orElseThrow(()->new StudentNotFoundException(String.
+                format("Student with id %d does not exist",id)));
+    }
 }

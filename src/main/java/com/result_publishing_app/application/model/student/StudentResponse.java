@@ -18,5 +18,5 @@ public class StudentResponse {
 
     private String email;
 
-    private List<Subject> subjects;
+    private List<Long> subjectIds;
 }

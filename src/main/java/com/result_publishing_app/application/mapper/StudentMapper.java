@@ -1,8 +1,5 @@
 package com.result_publishing_app.application.mapper;
 
-import com.result_publishing_app.application.model.professor.Professor;
-import com.result_publishing_app.application.model.professor.ProfessorCommand;
-import com.result_publishing_app.application.model.professor.ProfessorResponse;
 import com.result_publishing_app.application.model.student.Student;
 import com.result_publishing_app.application.model.student.StudentCommand;
 import com.result_publishing_app.application.model.student.StudentResponse;

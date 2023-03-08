@@ -1,5 +1,6 @@
 package com.result_publishing_app.application.model.subject;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.result_publishing_app.application.model.professor.Professor;
 import com.result_publishing_app.application.model.session.Session;
 import com.result_publishing_app.application.model.student.Student;
@@ -10,6 +11,7 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @Data
 @Entity
@@ -29,14 +31,17 @@ public class Subject {
     @Column(name = "year",nullable = false, length = 4)
     private String year;
 
+    @JsonManagedReference
     @ManyToMany(mappedBy = "subjects")
-    private List<Professor> professors;
+    private Set<Professor> professors;
 
+    @JsonManagedReference
     @ManyToMany(mappedBy = "subjects")
-    private List<Student> students;
+    private Set<Student> students;
 
+    @JsonManagedReference
     @ManyToMany(mappedBy = "subjects")
-    private List<Session> sessions;
+    private Set<Session> sessions;
 
     public long getId() {
         return id;
@@ -47,11 +52,6 @@ public class Subject {
         if (this == o) return true;
         if (!(o instanceof Subject)) return false;
         Subject subject = (Subject) o;
-        return getId() == subject.getId() && Objects.equals(getName(), subject.getName()) && Objects.equals(getYear(), subject.getYear()) && Objects.equals(getProfessors(), subject.getProfessors()) && Objects.equals(getStudents(), subject.getStudents()) && Objects.equals(getSessions(), subject.getSessions());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getId(), getName(), getYear(), getProfessors(), getStudents(), getSessions());
+        return Objects.equals(getName(), subject.getName()) && Objects.equals(getYear(), subject.getYear()) && Objects.equals(getProfessors(), subject.getProfessors()) && Objects.equals(getStudents(), subject.getStudents()) && Objects.equals(getSessions(), subject.getSessions());
     }
 }

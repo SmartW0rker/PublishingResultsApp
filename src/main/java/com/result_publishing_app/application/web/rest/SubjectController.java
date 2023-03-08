@@ -40,4 +40,9 @@ public class SubjectController {
     public Subject update(@RequestBody SubjectCommand command){
         return subjectService.update(command);
     }
+
+    @DeleteMapping("/delete/{id}")
+    public void delete(@PathVariable Long id){
+        subjectService.delete(id);
+    }
 }

@@ -22,9 +22,9 @@ public class SubjectResponse {
 
     private String year;
 
-    private List<Professor> professors;
+    private List<Long> professorIds;
 
-    private List<Student> students;
+    private List<Long> studentIds;
 
-    private List<Session> sessions;
+    private List<Long> sessionIds;
 }

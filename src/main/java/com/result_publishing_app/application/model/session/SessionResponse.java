@@ -22,5 +22,5 @@ public class SessionResponse {
 
     private LocalDate dueDate;
 
-    private List<Subject> subjects;
+    private List<Long> subjectIds;
 }
